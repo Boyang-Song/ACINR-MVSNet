@@ -24,7 +24,8 @@ If you find this project useful for your research, please cite:
 
 ### ACINR-MVSNetplus
 This ***advanced*** implementation ———— ACINR-MVSNetplus, mainly modified the INR module on the original basis for better comparison results. In particular, the depth-to/from-inverse_depth conversion made it possible to test the generalization ability of models trained on the DTU dataset directly on the Tanks and Temples(T&T) dataset, although the depth ranges of the two datasets are quite different.  
-ACINR-MVSNetplus provided two schemes with different depth map resolutions: (1)full resolution version for DTU and BlendedMVS (2)half resolution version for T&T.  
+  
+ACINR-MVSNetplus provided two schemes with different depth map resolutions: (1)full resolution version for DTU and BlendedMVS (2)half resolution version for T&T(large outdoor realistic scenes, full resolution brought more noise and extraneous points).  
 |                | CDE | INR | EGN | Img |
 |:--------------:|:---:|:---:|:---:|:---:|
 |ACINR-MVSNet|1/4|1/4|1/2|1|
