@@ -28,9 +28,9 @@ ACINR-MVSNetplus provided two schemes with different depth map resolutions: (1)f
 |                | CDE | INR | EGN | Img |
 |:--------------:|:---:|:---:|:---:|:---:|
 |ACINR-MVSNet|1/4|1/4|1/2|1|
-|ACINR-MVSNetplus<br>half resolution|1/4|1/2|1/2|1|
 |ACINR-MVSNetplus<br>full resolution|1/4|1/2|1|1|
-  
+|ACINR-MVSNetplus<br>half resolution|1/4|1/2|1/2|1|
+ 
 ## How to use
 ### Installation
 ACINRMVSNet is tested on:
@@ -74,11 +74,15 @@ The pretrained model is in `./checkpoints/pretrained`. Uncomment the code and mo
 |:--------------:|:----:|:-----:|:-------:|:-----------:|
 |original<br>ACINR-MVSNet|0.306|0.364|0.335|800*576<br>train_view=3|
 |Dmodel|0.326|0.327|0.326|1600*1152<br>train_view=3|
+|DmodelTNT|0.305|0.350|0.328|800*576<br>train_view=3|
+|Dmodel5TNT|0.306|0.345|0.325|800*576<br>train_view=5|
 ### BlendedMVS Validation
 |                |   A1   |   A3   |    Notes    |
 |:--------------:|:------:|:------:|:-----------:|
 |original<br>ACINR-MVSNet|89.2%|97.2%|384*288<br>train_view=3|
 |Bmodel|90.5%|97.6%|768*576<br>train_view=3|
+|BmodelTNT|90.0%|97.5%|384*288<br>train_view=3|
+|Bmodel5TNT|90.2%|97.4%|384*288<br>train_view=5|
 ### T&T
 |                | Family | Francis | Horse | Lighthouse | M60 | Panther | Playground | Train | **F-score** |    Notes    |
 |:--------------:|:------:|:-------:|:-----:|:----------:|:---:|:-------:|:----------:|:-----:|:-----------:|:-----------:|
