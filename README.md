@@ -74,15 +74,19 @@ The pretrained model is in `./checkpoints/pretrained`. Uncomment the code and mo
 |:--------------:|:----:|:-----:|:-------:|:-----------:|
 |original<br>ACINR-MVSNet|0.306|0.364|0.335|800*576<br>train_view=3|
 |Dmodel|0.326|0.327|0.326|1600*1152<br>train_view=3|
-|DmodelTNT|0.305|0.350|0.328|800*576<br>train_view=3|
-|Dmodel5TNT|0.306|0.345|0.325|800*576<br>train_view=5|
 ### BlendedMVS Validation
 |                |   A1   |   A3   |    Notes    |
 |:--------------:|:------:|:------:|:-----------:|
 |original<br>ACINR-MVSNet|89.2%|97.2%|384*288<br>train_view=3|
 |Bmodel|90.5%|97.6%|768*576<br>train_view=3|
-|BmodelTNT|90.0%|97.5%|384*288<br>train_view=3|
-|Bmodel5TNT|90.2%|97.4%|384*288<br>train_view=5|
+### T&T
+|                | Family | Francis | Horse | Lighthouse | M60 | Panther | Playground | Train | **F-score** |    Notes    |
+|:--------------:|:------:|:-------:|:-----:|:----------:|:---:|:-------:|:----------:|:-----:|:-----------:|:-----------:|
+|original<br>ACINR-MVSNet|64.83|39.07|41.64|54.59|53.62|51.17|55.45|47.79|51.02|train_view=5|
+|DmodelTNT|66.13|45.82|41.60|54.50|58.20|52.45|54.92|47.68|52.66|train_view=3|
+|Dmodel5TNT|67.43|45.11|42.13|54.74|59.01|53.88|54.49|47.13|52.99|train_view=5|
+|BmodelTNT|65.03|40.04|42.01|55.21|53.68|53.06|53.61|48.59|51.40|train_view=3|
+|Bmodel5TNT|65.18|38.77|43.18|55.06|54.49|53.39|55.41|47.90|51.67|train_view=5|
 ## Acknowledge
 This repository is MAINLY based on these open source work: [MVSNet_pytorch](https://github.com/xy-guo/MVSNet_pytorch), [FastMVSNet](https://github.com/svip-lab/FastMVSNet), [JIIF](https://github.com/ashawkey/jiif), [CasMVSNet_pl](https://github.com/kwea123/CasMVSNet_pl)  
   
