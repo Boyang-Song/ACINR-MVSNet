@@ -32,7 +32,7 @@ ACINR-MVSNetplus provided two schemes with different depth map resolutions: (1)f
 |ACINR-MVSNetplus<br>full resolution|1/4|1/2|1|1|
 |ACINR-MVSNetplus<br>half resolution|1/4|1/2|1/2|1|
 
-Ww also provide the original version of our ACINR-MVSNet by slightly revising ACINRMVSNetplus, please refer to the [origin]() branch of this project for more details.  
+We also provide the original version of our ACINR-MVSNet by slightly revising ACINRMVSNetplus, please refer to the [origin]() branch of this project for more details.  
 ## How to use
 ### Installation
 ACINRMVSNet is tested on:
