@@ -1,6 +1,6 @@
 # ACINR-MVSNet
 ## About 
-This repository contains the official ***advanced*** implementation of the [paper](https://www.sciencedirect.com/science/article/pii/S0262885622001408) : "Implicit neural refinement based multi-view stereo network with adaptive correlation".  
+This repository contains the official ***base*** implementation of the [paper](https://www.sciencedirect.com/science/article/pii/S0262885622001408) : "Implicit neural refinement based multi-view stereo network with adaptive correlation".  
 If you find this project useful for your research, please cite:  
 ```
 @article{song2022implicit,
@@ -22,8 +22,8 @@ If you find this project useful for your research, please cite:
 *The overall pipeline can be divided into three steps: **coarse depth estimation(CDE)**, **implicit neural depth refinement(INR)**, and **enhanced Gauss-Newton depth refinement(EGN)**.*  
 ![](https://github.com/Boyang-Song/ACINR-MVSNet/blob/main/doc/Network%20Architecture.png)  
 
-### ACINR-MVSNetplus
-This ***advanced*** implementation ———— ACINR-MVSNetplus, mainly modified the INR module on the original basis for better comparison results. In particular, the depth-to/from-inverse_depth conversion made it possible to test the generalization ability of models trained on the DTU dataset directly on the Tanks and Temples(T&T) dataset, although the depth ranges of the two datasets are quite different.  
+### ACINR-MVSNet
+This ***base*** implementation ———— ACINR-MVSNet is created by slightly revising ACINRMVSNetplus. Thus you can still use the model trained on the DTU dataset to predict depth maps for T&T.
   
 ACINR-MVSNetplus provided two schemes with different depth map resolutions: (1)full resolution version for DTU and BlendedMVS (2)half resolution version for T&T(large outdoor realistic scenes, full resolution brought more noise and extraneous points).  
 |                | CDE | INR | EGN | Img |
@@ -47,26 +47,17 @@ We only test our code under mentioned requirements.
 - For other datasets, please follow the practice in [MVSNet](https://github.com/YoYo000/MVSNet) by Yao Yao.
 - Set root of datasets as env variables in `env.sh`.
 ### For DTU dataset
-Train ACINR-MVSNetplus on `DTU` dataset (note that training requires a large amount of GPU memory), then predict depth maps and fuse them to get point clouds of `DTU`:
+Train ACINR-MVSNetplus on `DTU` dataset, then predict depth maps and fuse them to get point clouds of `DTU` or `T&T`:
 ```
-bash dtu.sh
+bash dtu3base.sh/dtu5base.sh
 ```
+**Note** '3' or '5' in the filename means 'train_view_num'
 ### For BlendedMVS dataset
-Train ACINR-MVSNetplus on `BlendedMVS` dataset, then validate and predict depth maps, and fuse them to get point clouds of `BlendedMVS`:
+Train ACINR-MVSNetplus on `BlendedMVS` dataset, then validate and predict depth maps, and fuse them to get point clouds of `BlendedMVS` or `T&T`:
 ```
-bash blend.sh
+bash blend3base.sh/blend5base.sh
 ```
-### For Tanks and Temples dataset
-Train ACINR-MVSNetplus on `DTU` dataset, then predict depth maps and fuse them to get point clouds of `T&T`:
-```
-bash dtuTNT.sh
-bash tnt.sh
-```
-Train ACINR-MVSNetplus on `BlendedMVS` dataset, then predict depth maps and fuse them to get point clouds of `T&T`:
-```
-bash blendTNT.sh
-bash tnt.sh
-```
+**Note** '3' or '5' in the filename means 'train_view_num'
 ## Metrics
 ### Pre-trained model
 The pretrained model is in `./checkpoints/pretrained`. Uncomment the code and modify the path in the corresponding `.sh`. 
@@ -74,24 +65,22 @@ The pretrained model is in `./checkpoints/pretrained`. Uncomment the code and mo
 |                | Acc. | Comp. | Overall |    Notes    |
 |:--------------:|:----:|:-----:|:-------:|:-----------:|
 |original<br>ACINR-MVSNet|0.306|0.364|0.335|800*576<br>train_view=3|
-|Dmodel|0.326|0.327|0.326|1600*1152<br>train_view=3|
-|DmodelTNT|0.305|0.350|0.328|800*576<br>train_view=3|
-|Dmodel5TNT|0.306|0.345|0.325|800*576<br>train_view=5|
+|**dtu3base**|0.307|0.353|0.330|800*576<br>train_view=3|
+|dtu5base|0.306|0.352|0.329|800*576<br>train_view=5|
 ### BlendedMVS Validation
 |                |   A1   |   A3   |    Notes    |
 |:--------------:|:------:|:------:|:-----------:|
 |original<br>ACINR-MVSNet|89.2%|97.2%|384*288<br>train_view=3|
-|Bmodel|90.5%|97.6%|768*576<br>train_view=3|
-|BmodelTNT|90.0%|97.5%|384*288<br>train_view=3|
-|Bmodel5TNT|90.2%|97.4%|384*288<br>train_view=5|
+|**blend3base**|89.6%|97.3%|384*288<br>train_view=3|
+|blend5base|89.1%|97.0%|384*288<br>train_view=5|
 ### T&T
 |                | Family | Francis | Horse | Lighthouse | M60 | Panther | Playground | Train | **F-score** |    Notes    |
 |:--------------:|:------:|:-------:|:-----:|:----------:|:---:|:-------:|:----------:|:-----:|:-----------:|:-----------:|
 |original<br>ACINR-MVSNet|64.83|39.07|41.64|54.59|53.62|51.17|55.45|47.79|51.02|train_view=5|
-|DmodelTNT|66.13|45.82|41.60|54.50|58.20|52.45|54.92|47.68|52.66|train_view=3|
-|Dmodel5TNT|67.43|45.11|42.13|54.74|59.01|53.88|54.49|47.13|52.99|train_view=5|
-|BmodelTNT|65.03|40.04|42.01|55.21|53.68|53.06|53.61|48.59|51.40|train_view=3|
-|Bmodel5TNT|65.18|38.77|43.18|55.06|54.49|53.39|55.41|47.90|51.67|train_view=5|
+|**blend5base**|65.62|40.60|37.33|55.67|56.06|53.65|55.19|50.42|51.82|train_view=5|
+|blend3base|59.61|32.85|38.26|53.35|52.67|51.08|51.66|47.24|48.34|train_view=3|
+|dtu5base|67.11|46.31|43.14|56.05|58.49|53.33|55.30|47.89|53.45|train_view=5|
+|dtu3base|65.18|45.04|40.97|54.29|56.90|51.78|54.56|47.19|51.99|train_view=3|
 ## Acknowledge
 This repository is MAINLY based on these open source work: [MVSNet_pytorch](https://github.com/xy-guo/MVSNet_pytorch), [FastMVSNet](https://github.com/svip-lab/FastMVSNet), [JIIF](https://github.com/ashawkey/jiif), [CasMVSNet_pl](https://github.com/kwea123/CasMVSNet_pl)  
   
