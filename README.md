@@ -61,6 +61,9 @@ bash blend3base.sh/blend5base.sh
 ## Metrics
 ### Pre-trained model
 The pretrained model is in `./checkpoints/pretrained`. Uncomment the code and modify the path in the corresponding `.sh`. 
+
+
+**Note** The models highlighted in **bold** are consistent with those used in the paper. 
 ### DTU
 |                | Acc. | Comp. | Overall |    Notes    |
 |:--------------:|:----:|:-----:|:-------:|:-----------:|
