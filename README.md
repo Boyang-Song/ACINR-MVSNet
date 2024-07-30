@@ -23,7 +23,7 @@ If you find this project useful for your research, please cite:
 ![](https://github.com/Boyang-Song/ACINR-MVSNet/blob/main/doc/Network%20Architecture.png)  
 
 ### ACINR-MVSNet
-This ***base*** implementation ———— ACINR-MVSNet is created by slightly revising ACINRMVSNetplus. Thus you can still use the model trained on the DTU dataset to predict depth maps for T&T.
+This ***base*** implementation ———— ACINR-MVSNet is created by slightly revising ACINRMVSNetplus. Thus you can still use the model trained on the DTU dataset to predict depth maps for T&T for better results.
   
 ACINR-MVSNetplus provided two schemes with different depth map resolutions: (1)full resolution version for DTU and BlendedMVS (2)half resolution version for T&T(large outdoor realistic scenes, full resolution brought more noise and extraneous points).  
 |                | CDE | INR | EGN | Img |
